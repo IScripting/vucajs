@@ -1,0 +1,74 @@
+.alpaca-field {
+    position: relative;
+}
+.alpaca-field .help-block {
+    display: none;
+    position: absolute;
+    bottom: -32px;
+}
+.alpaca-field input:focus + .help-block {
+    color: #c9c9c9;
+    opacity: 1;
+}
+.alpaca-field input {
+    border-width: 0 0 1px;
+    box-shadow: none;
+    border-radius: 0;
+    transition: all 0.3s linear;
+    padding: 0;
+}
+.alpaca-field input:focus {
+    box-shadow: none;
+}
+/**
+.alpaca-field label {
+    position: absolute;
+    top: 25px;
+    color: #999;
+    transition: all 0.3s linear;
+    width: 100%;
+    margin: 0;
+    pointer-events: none;
+    bottom: 0;
+}
+.alpaca-field.alpaca-field-focused label,
+.alpaca-field.edited label {
+    top: 0px;
+    color: #0d2434;
+}
+
+
+*/
+
+.alpaca-field label:after {
+ content: "";
+ position: absolute;
+ left: 50%;
+ bottom: 0;
+ width: 0;
+ background-color: transparent;
+ transition: all 0.3s linear;
+ height: 2px;
+ visibility: hidden;
+ z-index: 5;
+}
+
+.alpaca-field.alpaca-field-focused label:after {
+ left: 0;
+ width: 100%;
+ visibility: visible;
+ background-color: #4fc08d;
+}
+
+.alpaca-field.form-inline.col-xs-8{
+	width: 100%;
+	padding: 0;
+}
+
+.alpaca-field.form-inline.col-xs-8 label{
+	width: 20%;
+}
+
+.alpaca-field.form-inline.col-xs-8 input{
+	width: 79%;
+}

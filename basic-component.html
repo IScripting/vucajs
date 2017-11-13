@@ -24,7 +24,6 @@
 
 	<!-- css -->
 	<link type="text/css" href="css/main.css" rel="stylesheet" />
-	
 </head>
 
 <body>
@@ -83,24 +82,102 @@
 			</div>
 			<div class="col-md-9">
 
+				<h4>Core Fields</h4>
+
+				<ul>
+
+					<li>
+						<a href="#anchor1">Form - Basic Components</a>
+					</li>
+					<li>
+						<a href="#anchor2">Form - Single File Upload</a>
+					</li>
+					<li>
+						<a href="#anchor3">Form - Multiple File Upload</a>
+					</li>
+
+				</ul>
+
+				<a name="anchor1"></a>
 				<div class="page-header">
-					<h1>
-						VuecaJS - Easy Forms</h1>
+					<h1> Form - Basic Components</h1>
 				</div>
 
-				<p class="alert alert-warning" style="text-align: center">
-					Latest version:
-					<a href="https://github.com/IScripting/vucajs/archive/develop.zip">0.1</a> released on 11/14/2017.
-				</p>
+				<div id="basicComponents"></div>
 
-				<h2 id="toc_3">Is VuecaJS open source?</h2>
+				<button id="callBTN" class="btn btn-primary">call alert from list</button>
 
-				<p>Yes. Combination of alpacaJS and VueJs.</p>
+				<script type="text/javascript">
+					$("#basicComponents").alpaca(
 
-				<p>Alpaca is an open-source project and the source code is freely available under the Apache 2 license. We chose the Apache
-					2 license because it is permissive and lets you get the most out of open source.</p>
+						{
+							"data": {
+								"inputText": "123",
+								"bb": "555"
+							},
+							"schema": {
+								"type": "object",
+								"required": false,
+								"properties": {
+									"inputText": {
+										"type": "object",
+										"required": false
+									},
+									"bb": {
+										"type": "object",
+										"required": false
+									}
+								}
+							},
+							"options": {
+								"type": "object",
+								"legendStyle": "",
+								"fields": {
+									"inputText": {
+										"id": "inputText",
+										"name": "inputText",
+										"type": "text",
+										"label": "abc: ",
+										"helper": "Your favorite ice cream?",
+										"fieldClass": "form-inline col-xs-8"
+									},
+									"bb": {
+										"id": "bb",
+										"name": "bb",
+										"type": "text",
+										"label": "Email: ",
+										"fieldClass": "form-inline col-xs-8"
+									}
+								}
+							}
+						}
+					);
 
-				<p>VueJs is an open-source project license https://opensource.org/licenses/MIT.</p>
+					var callBTN = document.getElementById("callBTN");
+
+					callBTN.addEventListener("click", function (e) {
+
+						//cần lấy lại cái listView để gọi hàm kiểu này
+						// listView phải lấy lại từ el: #ID từ component khác
+						// kiểu thằng Kendo lấy lại list view từ ID đc: var listView = $("#ID").getKendoListView();
+						var control = $("#field1").alpaca("get");
+						var field = control.childrenByPropertyId['bb'];
+
+						alert(field.getValue());
+					});
+
+
+				</script>
+
+				<a name="anchor2"></a>
+				<div class="page-header">
+					<h1> Form - Single File Upload</h1>
+				</div>
+
+				<a name="anchor3"></a>
+				<div class="page-header">
+					<h1> Form - Multiple File Upload</h1>
+				</div>
 
 			</div>
 		</div>
