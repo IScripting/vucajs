@@ -22,8 +22,13 @@
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script type="text/javascript" src="js/vue.min.js"></script>
 
+	<script type="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script>
+	<link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
+	<script src="https://codemirror.net/mode/javascript/javascript.js"></script>
 	<!-- css -->
 	<link type="text/css" href="css/main.css" rel="stylesheet" />
+	<link type="text/css" href="https://daneden.github.io/animate.css/animate.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -100,74 +105,117 @@
 
 				<a name="anchor1"></a>
 				<div class="page-header">
+
 					<h1> Form - Basic Components</h1>
+
 				</div>
+				<div class="panel with-nav-tabs">
+					<div class="panel-heading">
+						<ul class="nav nav-tabs">
+							<li class="active">
+								<a href="#basicComponentsDemo" data-toggle="tab">Demo</a>
+							</li>
+							<li>
+								<a href="#basicComponentsSource" data-toggle="tab">
+									<i class="fa fa-code" aria-hidden="true"></i> Source Code</a>
+							</li>
+						</ul>
+					</div>
+					<div class="panel-body">
+						<div class="tab-content">
+							<div class="tab-pane fade in active" id="basicComponentsDemo">
+								<div id="basicComponents"></div>
 
-				<div id="basicComponents"></div>
+								<button id="callBTN" class="btn btn-primary">call alert from list</button>
 
-				<button id="callBTN" class="btn btn-primary">call alert from list</button>
+								<div id="basicComponentsContainer">
+<script type="text/javascript">
 
+	$("#basicComponents").alpaca(
+
+		{
+			"data": {
+				"inputText": "123",
+				"bb": "555"
+			},
+			"schema": {
+				"type": "object",
+				"required": false,
+				"properties": {
+					"inputText": {
+						"type": "object",
+						"required": false
+					},
+					"bb": {
+						"type": "object",
+						"required": false
+					}
+				}
+			},
+			"options": {
+				"type": "object",
+				"legendStyle": "",
+				"fields": {
+					"inputText": {
+						"id": "inputText",
+						"name": "inputText",
+						"type": "text",
+						"label": "abc: ",
+						"helper": "Your favorite ice cream?",
+						"fieldClass": "form-inline col-xs-8"
+					},
+					"bb": {
+						"id": "bb",
+						"name": "bb",
+						"type": "text",
+						"label": "Email: ",
+						"fieldClass": "form-inline col-xs-8"
+					}
+				}
+			}
+		}
+	);
+
+	var callBTN = document.getElementById("callBTN");
+
+		callBTN.addEventListener("click", function (e) {
+
+			//cần lấy lại cái listView để gọi hàm kiểu này
+			// listView phải lấy lại từ el: #ID từ component khác
+			// kiểu thằng Kendo lấy lại list view từ ID đc: var listView = $("#ID").getKendoListView();
+			var control = $("#field1").alpaca("get");
+			var field = control.childrenByPropertyId['bb'];
+
+			alert(field.getValue());
+		});
+
+</script>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="basicComponentsSource">Warning 2</div>
+						</div>
+					</div>
+				</div>
 				<script type="text/javascript">
-					$("#basicComponents").alpaca(
+					window.onload = function () {
+						$("#basicComponentsSource").html('');
 
-						{
-							"data": {
-								"inputText": "123",
-								"bb": "555"
-							},
-							"schema": {
-								"type": "object",
-								"required": false,
-								"properties": {
-									"inputText": {
-										"type": "object",
-										"required": false
-									},
-									"bb": {
-										"type": "object",
-										"required": false
-									}
-								}
-							},
-							"options": {
-								"type": "object",
-								"legendStyle": "",
-								"fields": {
-									"inputText": {
-										"id": "inputText",
-										"name": "inputText",
-										"type": "text",
-										"label": "abc: ",
-										"helper": "Your favorite ice cream?",
-										"fieldClass": "form-inline col-xs-8"
-									},
-									"bb": {
-										"id": "bb",
-										"name": "bb",
-										"type": "text",
-										"label": "Email: ",
-										"fieldClass": "form-inline col-xs-8"
-									}
-								}
-							}
-						}
-					);
+						String htmlDemo = '<div id="basicComponents"></div>';
+						editor = CodeMirror(document.getElementById("basicComponentsSource"), {
 
-					var callBTN = document.getElementById("callBTN");
+							mode: "text/html",
 
-					callBTN.addEventListener("click", function (e) {
+							extraKeys: { "Ctrl-Space": "autocomplete" },
 
-						//cần lấy lại cái listView để gọi hàm kiểu này
-						// listView phải lấy lại từ el: #ID từ component khác
-						// kiểu thằng Kendo lấy lại list view từ ID đc: var listView = $("#ID").getKendoListView();
-						var control = $("#field1").alpaca("get");
-						var field = control.childrenByPropertyId['bb'];
+							value: htmlDemo + $("#basicComponentsContainer").html()
 
-						alert(field.getValue());
-					});
-
+						});
+					};
 
 				</script>
+
+
+
 
 				<a name="anchor2"></a>
 				<div class="page-header">
