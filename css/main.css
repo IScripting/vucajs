@@ -1,8 +1,5 @@
-.alpaca-field {
-    position: relative;
-}
+
 .alpaca-field .help-block {
-    display: none;
     position: absolute;
     bottom: -32px;
 }
@@ -76,4 +73,10 @@
 
 html .btn-show-code {
 	position: absolute; top: 11px; right: 20px;font-family: 'Ubuntu', sans-serif;color: #337ab7;font-size: 24px;border-bottom: 1px dashed;text-decoration: none;
+}
+
+.alpaca-icon-required.glyphicon-star{
+    position: absolute;
+    right: 25px;
+    top: 10px;
 }

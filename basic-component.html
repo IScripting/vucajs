@@ -5,29 +5,51 @@
 
 	<title>IScripting</title>
 
-	<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 
 	<!-- dependencies (jquery, handlebars and bootstrap) -->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-	<link type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" />
-	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/alpaca/handlebars.min.js"></script>
+	<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 	<!-- alpaca -->
-	<link type="text/css" href="http://code.cloudcms.com/alpaca/1.5.23/bootstrap/alpaca.min.css" rel="stylesheet" />
-	<link type="text/css" href="http://www.alpacajs.org/assets/themes/dbyll/css/style.css" rel="stylesheet" />
-	<script type="text/javascript" src="http://code.cloudcms.com/alpaca/1.5.23/bootstrap/alpaca.min.js"></script>
+	<link type="text/css" href="css/alpaca.min.css" rel="stylesheet" />
+	<link type="text/css" href="css/style.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/alpaca/alpaca.min.js"></script>
+	<link type="text/css" href="css/spectrum.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/alpaca/spectrum.js"></script>
+	<script type="text/javascript" src="js/alpaca/ace.js"></script>
+	<link type="text/css" href="http://www.alpacajs.org/lib/summernote/dist/summernote.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://www.alpacajs.org/lib/summernote/dist/summernote.min.js"></script>
+	
+	<link type="text/css" href="css/bootstrap-datetimepicker.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/alpaca/moment-with-locales.min.js"></script>
+	<script type="text/javascript" src="js/alpaca/bootstrap-datetimepicker.min.js"></script>
+
+	<link type="text/css" href="css/bootstrap-multiselect.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/alpaca/bootstrap-multiselect.js"></script>
+
+	<!-- fileupload control (for UploadField) -->
+	<link rel="stylesheet" type="text/css" href="http://www.alpacajs.org/lib/blueimp-file-upload/css/jquery.fileupload.css">
+	<link rel="stylesheet" type="text/css" href="http://www.alpacajs.org/lib/blueimp-file-upload/css/jquery.fileupload-ui.css">
+	<script src="http://www.alpacajs.org/lib/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+	<script src="http://www.alpacajs.org/lib/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+	<script src="http://www.alpacajs.org/lib/blueimp-file-upload/js/jquery.fileupload.js"></script>
+	<script src="http://www.alpacajs.org/lib/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+	<script src="http://www.alpacajs.org/lib/blueimp-file-upload/js/jquery.fileupload-ui.js"></script>
 
 	<!-- vuejs -->
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="js/axios.min.js"></script>
 	<script type="text/javascript" src="js/vue.min.js"></script>
 
-	<script type="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script>
-	<link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
-	<script src="https://codemirror.net/mode/javascript/javascript.js"></script>
+	<script type="text/javascript" src="js/codemirror/codemirror.js"></script>
+	<link rel="stylesheet" href="css/codemirror.css">
+	<script src="js/codemirror/javascript.js"></script>
 	<!-- css -->
 	<link type="text/css" href="css/main.css" rel="stylesheet" />
-	<link type="text/css" href="https://daneden.github.io/animate.css/animate.min.css" rel="stylesheet" />
+	<link type="text/css" href="css/animate.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/vucajs/form-builder.js"></script>
 
 </head>
 
@@ -124,57 +146,262 @@
 					<div class="panel-body">
 						<div class="tab-content">
 							<div class="tab-pane fade in active" id="basicComponentsDemo">
+								<div id="basicComponentFormBuilder"></div>
 								<div id="basicComponents"></div>
-
 								<button id="callBTN" class="btn btn-primary">call alert from list</button>
+								<script type="text/javascript">
 
+									var formBuilder = new FormBuilder({
+										el: "basicComponentFormBuilder",
+										groupId: 20143,
+										className: "iscripting",
+										classPK: "115",
+										dataPK: "115",
+										data: {
+											"inputText": "sac"
+										},
+										options: {
+											"inputText": {
+                								"id": "inputText",
+												"name": "inputText",
+												"required": true,
+												"type": "text",
+												"label": "label inputText: ",
+												"placeholder": "description",
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputEmail": {
+                								"id": "inputEmail",
+												"name": "inputEmail",
+												"required": false,
+												"type": "email",
+												"label": "label inputEmail: ",
+												"placeholder": "email address example: abc@google.com",
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputHidden": {
+                								"id": "inputHidden",
+												"name": "inputHidden",
+												"required": false,
+												"type": "hidden",
+											},
+											"inputNumber": {
+                								"id": "inputNumber",
+												"name": "inputNumber",
+												"required": false,
+												"type": "number",
+												"label": "label inputNumber: ",
+												"placeholder": "number format",
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputPassWord": {
+                								"id": "inputPassWord",
+												"name": "inputPassWord",
+												"required": false,
+												"type": "password",
+												"label": "label inputPassWord: ",
+												"placeholder": "password",
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputTime": {
+                								"id": "inputTime",
+												"name": "inputTime",
+												"required": false,
+												"type": "time",
+												"label": "label inputTime: ",
+												"placeholder": "HH24:mm:ss",
+												"dateFormat": "HH:mm:ss",
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputDate": {
+                								"id": "inputDate",
+												"name": "inputDate",
+												"required": false,
+												"type": "date",
+												"label": "label inputDate: ",
+												"placeholder": "DD/MM/YYYY",
+        										"picker": {
+													"format": "DD/MM/YY"
+												},
+												"manualEntry": true,
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputDateTime": {
+                								"id": "inputDateTime",
+												"name": "inputDateTime",
+												"required": false,
+												"type": "datetime",
+												"label": "label inputDateTime: ",
+												"placeholder": "DD/MM/YYYY HH24:mm:ss",
+        										"picker": {
+													"format": "DD/MM/YYYY HH:mm:ss",
+													"extraFormats": ["DD/MM/YYYY hh:mm:ss a"]
+												},
+												"manualEntry": true,
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputSelect": {
+                								"id": "inputSelect",
+												"name": "inputSelect",
+												"required": false,
+												"type": "select",
+												"label": "label inputSelect: ",
+												"fieldClass": "form-inline col-xs-8",
+												"multiple": false,
+												"emptySelectFirst": true,
+												"hideNone": true,
+												"dataSource": function(callback) {
+													callback([{
+														"value": "rambo",
+														"text": "John Rambo"
+													}, {
+														"value": "norris",
+														"text": "Chuck Norris"
+													}, {
+														"value": "arnold",
+														"text": "Arnold Schwarzenegger"
+													}]);
+												}
+											},
+											"inputSelectMutiple": {
+                								"id": "inputSelectMutiple",
+												"name": "inputSelectMutiple",
+												"required": false,
+												"type": "select",
+												"label": "label inputSelectMutiple: ",
+												"fieldClass": "form-inline col-xs-8",
+												"multiple": true,
+												"hideInitValidationError": true,
+												"multiselect": {
+													"enableFiltering": true,
+													"includeSelectAllOption": true
+												},
+												"dataSource": function(callback) {
+													callback([{
+														"value": "rambo",
+														"text": "John Rambo"
+													}, {
+														"value": "norris",
+														"text": "Chuck Norris"
+													}, {
+														"value": "arnold",
+														"text": "Arnold Schwarzenegger"
+													}]);
+												}
+											},
+											"inputFileSingle": {
+                								"id": "inputFileSingle",
+												"name": "inputFileSingle",
+												"required": false,
+												"type": "file",
+												"label": "label inputFileSingle: ",
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputFileMutiple": {
+                								"id": "inputFileMutiple",
+												"name": "inputFileMutiple",
+												"required": false,
+												"type": "upload",
+												"label": "label inputFileMutiple: ",
+												"multiple": true,
+												"maxFileSize": 25000000,
+												"maxNumberOfFiles": 3,
+												"fileTypes": "(\.|\/)(gif|jpe?g|png)$",
+												"upload": {
+													"url": "http://www.alpacajs.org/fileupload/index.php"
+												}
+											},
+											"inputRadioInline": {
+                								"id": "inputRadioInline",
+												"name": "inputRadioInline",
+												"required": false,
+												"type": "radio",
+												"label": "label inputRadioInline: ",
+												"fieldClass": "",
+												"removeDefaultNone": true,
+												"vertical": false,
+												"dataSource": function(callback) {
+													callback([{
+														"value": "rambo",
+														"text": "John Rambo"
+													}, {
+														"value": "norris",
+														"text": "Chuck Norris"
+													}, {
+														"value": "arnold",
+														"text": "Arnold Schwarzenegger"
+													}]);
+												}
+											},
+											"inputRadio": {
+                								"id": "inputRadio",
+												"name": "inputRadio",
+												"required": false,
+												"type": "radio",
+												"label": "label inputRadio: ",
+												"removeDefaultNone": true,
+												"vertical": true,
+												"dataSource": function(callback) {
+													callback([{
+														"value": "rambo",
+														"text": "John Rambo"
+													}, {
+														"value": "norris",
+														"text": "Chuck Norris"
+													}, {
+														"value": "arnold",
+														"text": "Arnold Schwarzenegger"
+													}]);
+												}
+											},
+											"inputTextArea": {
+                								"id": "inputTextArea",
+												"name": "inputTextArea",
+												"required": false,
+												"type": "textarea",
+												"rows": 3,
+												"label": "label inputTextArea: ",
+												"placeholder": "description",
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputColor": {
+                								"id": "inputColor",
+												"name": "inputColor",
+												"required": false,
+												"type": "color",
+												"label": "label inputColor: ",
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputEditor": {
+                								"id": "inputEditor",
+												"name": "inputEditor",
+												"required": false,
+												"type": "editor",
+												"label": "label inputEditor: ",
+												"fieldClass": "form-inline col-xs-8"
+											},
+											"inputSummernote": {
+                								"id": "inputSummernote",
+												"name": "inputSummernote",
+												"required": false,
+												"type": "summernote",
+												"label": "label inputSummernote: ",
+											}
+
+										},
+										template: "default",
+										bindings: "default",
+										postRender: function (control) { 
+
+										}
+									});
+
+									formBuilder._inputForm();
+
+								</script>
+							
 								<div id="basicComponentsContainer">
 <script type="text/javascript">
-
-	$("#basicComponents").alpaca(
-
-		{
-			"data": {
-				"inputText": "123",
-				"bb": "555"
-			},
-			"schema": {
-				"type": "object",
-				"required": false,
-				"properties": {
-					"inputText": {
-						"type": "object",
-						"required": false
-					},
-					"bb": {
-						"type": "object",
-						"required": false
-					}
-				}
-			},
-			"options": {
-				"type": "object",
-				"legendStyle": "",
-				"fields": {
-					"inputText": {
-						"id": "inputText",
-						"name": "inputText",
-						"type": "text",
-						"label": "abc: ",
-						"helper": "Your favorite ice cream?",
-						"fieldClass": "form-inline col-xs-8"
-					},
-					"bb": {
-						"id": "bb",
-						"name": "bb",
-						"type": "text",
-						"label": "Email: ",
-						"fieldClass": "form-inline col-xs-8"
-					}
-				}
-			}
-		}
-	);
 
 	var callBTN = document.getElementById("callBTN");
 
@@ -198,9 +425,10 @@
 				</div>
 				<script type="text/javascript">
 					window.onload = function () {
-						$("#basicComponentsSource").html('');
+						$("#basicComponentsSource").html('');	
 
-						String htmlDemo = '<div id="basicComponents"></div>';
+						var htmlDemo = '<div id="basicComponents"></div>';
+
 						editor = CodeMirror(document.getElementById("basicComponentsSource"), {
 
 							mode: "text/html",
