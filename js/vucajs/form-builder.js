@@ -46,6 +46,8 @@
 
 		_init: function () {
 			// Init function
+			this._initLoadingMark();
+
 			var optionsData = this.options.options;
 
 			//builder schema
@@ -67,7 +69,7 @@
 					$.extend( true, fieldBuilder, { "required": detailOption["required"] } );
 
 				}
-				console.log();
+				
 				if (optionsData.hasOwnProperty(key) && detailOption.hasOwnProperty("name")) {
 					
 					schemaBuilder[key] = fieldBuilder;
@@ -83,7 +85,11 @@
 
 			this.options.data = dataBuilder;
 
-			console.log(schemaBuilder);
+			//builder postrender
+
+			var postRenderBuilder = this.options.postRender;
+
+			console.log(JSON.stringify(this.options.postRender));
 
 		},
 
@@ -95,19 +101,20 @@
 				delete inputView["layout"]; 
 			}
 
-			console.log(inputView);
-
 			var alpacaForm = {};
 
 			$.extend( alpacaForm, { "data" : this.options.data } );
 			$.extend( alpacaForm, { "schema" : { "type": "object", "properties": this.options.schema } } );
 			$.extend( alpacaForm, { "options" : { "fields": this.options.options } } );
 			$.extend( alpacaForm, { "view" : inputView } );
-
-			console.log( JSON.stringify(alpacaForm) );
-
+			$.extend( alpacaForm, { "postRender" : this.options.postRender } );
+			
 			$("#" + this.options.el).alpaca(alpacaForm);
 
+			var dldld = this.options.el;
+
+			check(dldld);
+			
 		},
 
 		_viewForm: function () {
@@ -118,9 +125,31 @@
 				$.extend(inputView, { "parent": "bootstrap-display", "layout": {} });
 			}
 
-			console.log(inputView);
+		},
+
+		_initLoadingMark: function () {
+			//add loading 
+			$("#" + this.options.el).parent().append('<div class="text-center circle-loader-wrap"><div class="circle-loader"></div></div>');
+
 		}
 
 	};
 
 }());
+
+var check = function(el){
+	
+	var controlBJS = $("#" + el).alpaca("get");
+	
+    if(controlBJS != null){
+
+		console.log("Form generator done!");
+		$("#" + el).parent().children(".circle-loader-wrap").remove();
+		
+    }
+    else {
+		setTimeout(function() {
+			check(el)
+		}, 500);
+    }
+}

@@ -146,9 +146,12 @@
 					<div class="panel-body">
 						<div class="tab-content">
 							<div class="tab-pane fade in active" id="basicComponentsDemo">
-								<div id="basicComponentFormBuilder"></div>
-								<div id="basicComponents"></div>
-								<button id="callBTN" class="btn btn-primary">call alert from list</button>
+									
+								<div id="basicComponentFormBuilder" style="overflow: hidden;"></div>
+								
+								<div class="clearfix">
+										<button id="callBTN" class="btn btn-primary">call alert from list</button>
+								</div>
 								<script type="text/javascript">
 
 									var formBuilder = new FormBuilder({
@@ -392,7 +395,7 @@
 										template: "default",
 										bindings: "default",
 										postRender: function (control) { 
-
+											
 										}
 									});
 
@@ -410,8 +413,8 @@
 			//cần lấy lại cái listView để gọi hàm kiểu này
 			// listView phải lấy lại từ el: #ID từ component khác
 			// kiểu thằng Kendo lấy lại list view từ ID đc: var listView = $("#ID").getKendoListView();
-			var control = $("#field1").alpaca("get");
-			var field = control.childrenByPropertyId['bb'];
+			var control = $("#basicComponentFormBuilder").alpaca("get");
+			var field = control.childrenByPropertyId['inputText'];
 
 			alert(field.getValue());
 		});
