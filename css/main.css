@@ -1,22 +1,60 @@
-
 .alpaca-field .help-block {
-    position: absolute;
-    bottom: -32px;
+    /* position: absolute; */
+    margin-bottom: 0;
 }
-.alpaca-field input:focus + .help-block {
-    color: #c9c9c9;
-    opacity: 1;
-}
-.alpaca-field input {
+
+.alpaca-field input, .alpaca-field select, 
+.alpaca-field-textarea textarea {
     border-width: 0 0 1px;
-    box-shadow: none;
+    box-shadow: none !important;
     border-radius: 0;
     transition: all 0.3s linear;
     padding: 0;
 }
-.alpaca-field input:focus {
+
+.alpaca-field input:focus, .alpaca-field select:focus, 
+.alpaca-field-textarea textarea:focus, 
+.alpaca-field-file input[type="file"]:focus {
+    box-shadow: none;
+    outline: none;
+}
+.alpaca-field-textarea.alpaca-field-focused textarea {
+    border-bottom: 2px solid #4fc08d;
+}
+.alpaca-field-select:before {
+    content: "\f0d7";
+    font-family: FontAwesome;
+    position: absolute;
+    right: 20px;
+    top: 7px;
+    pointer-events: none;
+}
+.alpaca-field-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+}
+.alpaca-field-file input[type="file"] {
+    margin-top: 7px;
+}
+.note-editor.note-frame, 
+.note-editor.note-frame .panel-heading.note-toolbar {
+    border: 0;
     box-shadow: none;
 }
+.note-editor.note-frame .note-statusbar {
+  background-color: transparent;
+}
+.note-editor.note-frame .panel-heading.note-toolbar {
+    background-color: #f5f5f5;
+}
+.note-editor.note-frame button {
+    height: 30px;
+    border-radius: 0;
+    border-color: #ebebeb;
+}
+
+
 /**
 .alpaca-field label {
     position: absolute;
@@ -38,51 +76,267 @@
 */
 
 .alpaca-field label:after {
- content: "";
- position: absolute;
- left: 50%;
- bottom: 0;
- width: 0;
- background-color: transparent;
- transition: all 0.3s linear;
- height: 2px;
- visibility: hidden;
- z-index: 5;
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    background-color: transparent;
+    transition: all 0.3s linear;
+    height: 2px;
+    visibility: hidden;
+    z-index: 5;
+    top: 33px;
 }
-
 .alpaca-field.alpaca-field-focused label:after {
- left: 0;
- width: 100%;
- visibility: visible;
- background-color: #4fc08d;
+    left: 0;
+    width: 100%;
+    visibility: visible;
+    background-color: #4fc08d;
+}
+.alpaca-field-textarea.alpaca-field-focused label:after, 
+.alpaca-field-radio.alpaca-field-focused label:after {
+    width: 0 !important;
 }
 
-.alpaca-field.form-inline.col-xs-8{
-	width: 100%;
+div[class*="vuejs-col"] {
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    float: left;
 }
 
-.alpaca-field.form-inline.col-xs-8 label{
-	width: 20%;
-	float: left;
-	padding-top: 7px;
+.vuejs-col-1 label {
+    width: 90%;
+    float: left;
+    padding-top: 7px;
 }
-
-.alpaca-field.form-inline.col-xs-8 input{
-	width: 79%;
+.vuejs-col-1 .form-control {
+    width: 10%;
+}
+.vuejs-col-1 label:after {
+    left: 95%;
+}
+.vuejs-col-1.alpaca-field-focused label:after {
+    left: 90%;
+    width: 10%;
+}
+.vuejs-col-2 label {
+    width: 80%;
+    float: left;
+    padding-top: 7px;
+}
+.vuejs-col-2 .form-control {
+    width: 20%;
+}
+.vuejs-col-2 label:after {
+    left: 90%;
+}
+.vuejs-col-2.alpaca-field-focused label:after {
+    left: 80%;
+    width: 20%;
+}
+.vuejs-col-3 label {
+    width: 70%;
+    float: left;
+    padding-top: 7px;
+}
+.vuejs-col-3 .form-control {
+    width: 30%;
+}
+.vuejs-col-3 label:after {
+    left: 85%;
+}
+.vuejs-col-3.alpaca-field-focused label:after {
+    left: 70%;
+    width: 30%;
+}
+.vuejs-col-4 label {
+    width: 60%;
+    float: left;
+    padding-top: 7px;
+}
+.vuejs-col-4 .form-control {
+    width: 40%;
+}
+.vuejs-col-4 label:after {
+    left: 80%;
+}
+.vuejs-col-4.alpaca-field-focused label:after {
+    left: 60%;
+    width: 40%;
+}
+.vuejs-col-5 label {
+    width: 50%;
+    float: left;
+    padding-top: 7px;
+}
+.vuejs-col-5 .form-control {
+    width: 50%;
+}
+.vuejs-col-5 label:after {
+    left: 75%;
+}
+.vuejs-col-5.alpaca-field-focused label:after {
+    left: 50%;
+    width: 50%;
+}
+.vuejs-col-6 label {
+    width: 40%;
+    float: left;
+    padding-top: 7px;
+}
+.vuejs-col-6 .form-control {
+    width: 60%;
+}
+.vuejs-col-6 label:after {
+    left: 70%;
+}
+.vuejs-col-6.alpaca-field-focused label:after {
+    left: 40%;
+    width: 60%;
+}
+.vuejs-col-7 label {
+    width: 30%;
+    float: left;
+    padding-top: 7px;
+}
+.vuejs-col-7 .form-control {
+    width: 70%;
+}
+.vuejs-col-7 label:after {
+    left: 65%;
+}
+.vuejs-col-7.alpaca-field-focused label:after {
+    left: 30%;
+    width: 70%;
+}
+.vuejs-col-8 label {
+    width: 20%;
+    float: left;
+    padding-top: 7px;
+}
+.vuejs-col-8 .form-control {
+    width: 80%;
+}
+.vuejs-col-8 label:after {
+    left: 60%;
+}
+.vuejs-col-8.alpaca-field-focused label:after {
+    left: 20%;
+    width: 80%;
+}
+.vuejs-col-9 label {
+    width: 10%;
+    float: left;
+    padding-top: 7px;
+}
+.vuejs-col-9 .form-control {
+    width: 90%;
+}
+.vuejs-col-9 label:after {
+    left: 55%;
+}
+.vuejs-col-9.alpaca-field-focused label:after {
+    left: 10%;
+    width: 90%;
 }
 
 html .btn-show-code {
-	position: absolute; top: 11px; right: 20px;font-family: 'Ubuntu', sans-serif;color: #337ab7;font-size: 24px;border-bottom: 1px dashed;text-decoration: none;
+    position: absolute;
+    top: 11px;
+    right: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    color: #337ab7;
+    font-size: 24px;
+    border-bottom: 1px dashed;
+    text-decoration: none;
 }
 
-.alpaca-icon-required.glyphicon-star{
+.alpaca-icon-required.glyphicon-star {
     position: absolute;
-    right: 25px;
+    right: 0;
     top: 10px;
 }
 
-html .alpaca-field-object.alpaca-top{
+html .alpaca-field-object.alpaca-top {
     width: 100%;
+}
+
+body .alpaca-control.radio {
+
+    margin-left: 0;
+
+}
+body .alpaca-field .radio input[type="radio"] ,
+body .alpaca-field .checkbox input[type="checkbox"] {
+    visibility: hidden;
+    position: absolute;
+}
+
+.alpaca-control.radio label,
+.alpaca-control.checkbox label {
+    width: 100%;
+}
+
+.alpaca-control.radio label::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+    background-color: #fff;
+    background-color: #ccc;
+    -webkit-transition: border 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out;
+}
+
+.alpaca-control.checkbox label::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    border: 1px solid #cccccc;
+    background-color: #fff;
+    background-color: #ccc;
+    -webkit-transition: border 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out;
+}
+
+.alpaca-control.radio input[type="radio"]:checked + label::before,
+.alpaca-control.checkbox input[type="checkbox"]:checked + label::before {
+    content: "";
+    border-color: #0d2434;
+    background-color: #0d2434;
+}
+
+html .alpaca-fileupload-container,
+html .alpaca-fileupload-container .container-fluid,
+html .alpaca-fileupload-container .container-fluid .alpaca-fileupload-chooserow,
+html .alpaca-fileupload-container .container-fluid .alpaca-fileupload-chooserow > div:first-child {
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    margin: 0;
+}
+
+html .alpaca-fileupload-container .container-fluid .alpaca-fileupload-well{
+
+    margin-bottom: 0px;
+
+}
+html .alpaca-fileupload-container .container-fluid .fileupload-active-zone,
+html .alpaca-fileupload-container .container-fluid .fileupload-active-zone table {
+
+    border-radius: 0;
+    margin: 0;
+    padding: 0 5px;
+
 }
 
 .circle-loader {
@@ -96,32 +350,34 @@ html .alpaca-field-object.alpaca-top{
     position: relative;
     display: inline-block;
     vertical-align: top;
-  }
-  
-  .circle-loader,
-  .circle-loader:after {
+}
+
+.circle-loader,
+.circle-loader:after {
     border-radius: 50%;
     width: 8em;
     height: 8em;
-  }
-  
-  .load-complete {
+}
+
+.load-complete {
     -webkit-animation: none;
     animation: none;
     border-color: #5cb85c;
     transition: border 500ms ease-out;
-  }
-  
-  .checkmark {
+}
+
+.checkmark {
     display: none;
-  }
-  .checkmark.draw:after {
+}
+
+.checkmark.draw:after {
     animation-duration: 800ms;
     animation-timing-function: ease;
     animation-name: checkmark;
     transform: scaleX(-1) rotate(135deg);
-  }
-  .checkmark:after {
+}
+
+.checkmark:after {
     opacity: 1;
     height: 4em;
     width: 2em;
@@ -132,36 +388,36 @@ html .alpaca-field-object.alpaca-top{
     left: 2em;
     top: 4em;
     position: absolute;
-  }
-  
-  @keyframes loader-spin {
+}
+
+@keyframes loader-spin {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  @keyframes checkmark {
+}
+
+@keyframes checkmark {
     0% {
-      height: 0;
-      width: 0;
-      opacity: 1;
+        height: 0;
+        width: 0;
+        opacity: 1;
     }
     20% {
-      height: 0;
-      width: 2em;
-      opacity: 1;
+        height: 0;
+        width: 2em;
+        opacity: 1;
     }
     40% {
-      height: 4em;
-      width: 2em;
-      opacity: 1;
+        height: 4em;
+        width: 2em;
+        opacity: 1;
     }
     100% {
-      height: 4em;
-      width: 2em;
-      opacity: 1;
+        height: 4em;
+        width: 2em;
+        opacity: 1;
     }
-  }
-  
+}

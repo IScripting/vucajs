@@ -368,36 +368,16 @@
 												"vertical": true,
 												"fieldClass": "form-inline vuejs-col-8",
 												"dataSource": function(callback) {
-													
-													$.ajax({
-														url: "http://www.alpacajs.org/data/icecream-list.json",
-														type: 'GET',
-														dataType: 'json',
-														contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-														success: function(data, textStatus, xhr) {
-															
-															var source = new Array();
-
-															for (var key in data) {
-																var elObj = {};
-																if (data.hasOwnProperty(key)) {
-																	elObj["value"] = key;
-																	elObj["text"] = data[key];
-
-																	source.push(elObj);
-																}
-															}
-														
-															callback(source);
-														},
-														error: function(xhr, textStatus, errorThrown) {
-														
-														
-														
-														}
-													});
-												
-													
+													callback([{
+														"value": "rambo",
+														"text": "John Rambo"
+													}, {
+														"value": "norris",
+														"text": "Chuck Norris"
+													}, {
+														"value": "arnold",
+														"text": "Arnold Schwarzenegger"
+													}]);
 												}
 											},
 											"inputTextArea": {
@@ -445,15 +425,10 @@
 									formBuilder._inputForm();
 
 								</script>
-					<div id="field1" />	
+						
 								<div id="basicComponentsContainer">
 <script type="text/javascript">
-$("#field1").alpaca({
-    "data": ["great", "wonderful", "ice cream"],
-    "options": {
-        "type": "tag"
-    }
-});
+
 	var callBTN = document.getElementById("callBTN");
 
 		callBTN.addEventListener("click", function (e) {
