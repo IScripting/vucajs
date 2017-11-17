@@ -17,6 +17,7 @@
 	<link type="text/css" href="css/alpaca.min.css" rel="stylesheet" />
 	<link type="text/css" href="css/style.css" rel="stylesheet" />
 	<script type="text/javascript" src="js/alpaca/alpaca.min.js"></script>
+	
 	<link type="text/css" href="css/spectrum.css" rel="stylesheet" />
 	<script type="text/javascript" src="js/alpaca/spectrum.js"></script>
 	<script type="text/javascript" src="js/alpaca/ace.js"></script>
@@ -366,7 +367,7 @@
 												"label": "label inputRadio: ",
 												"removeDefaultNone": true,
 												"vertical": true,
-												"fieldClass": "form-inline vuejs-col-8",
+												"fieldClass": "",
 												"dataSource": function(callback) {
 													
 													$.ajax({
@@ -445,15 +446,10 @@
 									formBuilder._inputForm();
 
 								</script>
-					<div id="field1" />	
+					
 								<div id="basicComponentsContainer">
 <script type="text/javascript">
-$("#field1").alpaca({
-    "data": ["great", "wonderful", "ice cream"],
-    "options": {
-        "type": "tag"
-    }
-});
+
 	var callBTN = document.getElementById("callBTN");
 
 		callBTN.addEventListener("click", function (e) {

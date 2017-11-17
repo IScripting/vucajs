@@ -1,0 +1,1 @@
+vucajs RICK UI component
